@@ -28,7 +28,10 @@
                     It should display an img element that corresponds to the category.  The image file should be stored in the static folder.  The assumption is that the category image filename is the same as the category name.
                     The general format should be
                     <a href="url with category Id parameter"><img = "image filename" alt = "image name"></a> -->
-                    
+                    <a href="/category/{{ category.id }}">
+                        <img src="{{ url_for('static', filename='images/categories/' ~ category.image) }}"
+                             alt="{{ category.name }}">
+                    </a>
 
                 </div>
             {%endfor%}
