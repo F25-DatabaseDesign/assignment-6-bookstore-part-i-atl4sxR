@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Treble Clef</title>
+    <title>Midnight Tomes</title>
     <link rel="stylesheet"
       href="{{ url_for('static', filename='css/main.css') }}"
     />
@@ -11,7 +11,7 @@
     <header>
       <div id="leftHeader">
         <a href="{{ url_for('home')}}">
-          <img src="static/images/misc/treble-clef-logo.jpg" alt="Treble Clef logo">
+          <img src="static/images/misc/midnightTomesLogo.png" alt="Treble Clef logo">
 
         </a>
       </div>
@@ -29,6 +29,11 @@
                    The category name should be what is displayed
                    The general format should be
                    <p><a href="url with category Id parameter">category name</a></p>          -->
+                <p>
+                  <a href="/category?categoryId={{ category.id }}">
+                      {{ category.name }}
+                  </a>
+              </p>
               {%endfor%}
             </div>
         </div>
@@ -46,6 +51,7 @@
   <footer>
     <div id="footerLeft">
       <!-- Insert the name of your site here-->
+      <p>Midnight Tomes</p>
       <p>&copy; </p>
         <a href="#">Contact Us</a>
         <a href="#">Directions</a>
