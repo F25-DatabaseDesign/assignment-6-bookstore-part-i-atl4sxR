@@ -19,7 +19,7 @@
 					 use class='notSelectedCategory' to style the category 
                 -->
 					<p class="notSelectedCategory">
-	                    <a href="/category?categoryId={{ category.id }}">
+	                    <a href="/category/{{ category.id }}">
 	                        {{ category.name }}
 	                    </a>
 	                </p>
@@ -32,7 +32,7 @@
         {% for book in books %}
                 <div class='book'>
                     <!-- Insert the book image stored in the static folder and the book as the alt text -->
-                    <div><img src='book image' alt='book name'/></div>
+                     <img src="{{ url_for('static', filename='images/books/' ~ book.image) }}" alt="{{ book.title }}">
                     <div class='bookDetailBox'>
                         <!-- Insert the corresponding field into each of the following rows -->
                         <p class='bookTitle'>{{ book.title }}</p>
@@ -51,4 +51,3 @@
     </section>
 </main>
 {% endblock %}
-
