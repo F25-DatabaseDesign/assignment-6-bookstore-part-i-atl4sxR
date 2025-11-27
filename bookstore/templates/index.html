@@ -3,39 +3,29 @@
 {% block container %}
 <main>
     <div id="mainLeft">
-        <!-- Insert some welcome text here -->
-        <h1 class="welcomeText">this is a heading</h1>
+        <h1 class="welcomeText">Welcome to Midnight Tomes</h1>
         <p class="welcomeText">Step into a realm where stories spark to life and every shelf hides a new adventure</p>
         <p class="welcomeText">From ancient prophecies to enchanted kingdoms, our collection brings magic to every reader</p>
         <p class="welcomeText">Discover worlds beyond imagination—your next great quest begins between our pages</p>
     </div>
+
     <div id='mainRight'>
         <h1>Shop by category:</h1>
         <div id='categorySelections'>
-            <!-- Create a for loop to iterate through the list of categories -->
             {% for category in categories %}
                 <div class='category'>
-                    <!-- Insert a p element that contains a link with the categoryid as a URL parameter
-                    The category name should be what is displayed
-                    The general format should be
-                    <p><a href="url with category Id parameter">category name</a></p> -->
-                    <p>
-                        <a href="/category/{{ category.id }}">
+                    <!-- Category name link -->
+                    <p><a href="/category/{{ category.id }}">
                             {{ category.name }}
                         </a>
                     </p>
-                    <!-- Insert an a element that contains a link with the categoryid as a URL parameter
-                    It should display an img element that corresponds to the category.  The image file should be stored in the static folder.  The assumption is that the category image filename is the same as the category name.
-                    The general format should be
-                    <a href="url with category Id parameter"><img = "image filename" alt = "image name"></a> -->
+                    <!-- Category image link -->
                     <a href="/category/{{ category.id }}">
                         <img src="{{ url_for('static', filename='images/categories/' ~ category.image) }}"
                              alt="{{ category.name }}">
                     </a>
-
                 </div>
-            {%endfor%}
-
+            {% endfor %}
         </div>
     </div>
 </main>
