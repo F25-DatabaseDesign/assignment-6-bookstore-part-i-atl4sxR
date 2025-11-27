@@ -6,11 +6,12 @@ app = Flask(__name__)
 
 # Create a list called categories. The elements in the list should be lists that contain the following information in this order:
 categories = [
-    {"id": 1, "name": "Epic Fantasy"},
-    {"id": 2, "name": "Science Fiction"},
-    {"id": 3, "name": "Translated"},
-    {"id": 4, "name": "LGBTQ+"}
+    {"id": 1, "name": "Epic Fantasy", "image": "2.png"},
+    {"id": 2, "name": "Science Fiction", "image": "4.png"},
+    {"id": 3, "name": "Translated", "image": "1.png"},
+    {"id": 4, "name": "LGBTQ+", "image": "3.png"}
 ]
+
 
 # Create a list called books. The elements in the list should be lists that contain the following information in this order:
 books = [
@@ -64,7 +65,7 @@ books = [
         "author": "Jay Kristoff",
         "isbn": "9780553499117",
         "price": 12.99,
-        "image": "illuminae.jpg",
+        "image": "illuminae.gif",
         "readNow": 1
     },
     {
@@ -74,7 +75,7 @@ books = [
         "author": "Pierce Brown",
         "isbn": "9780345539809",
         "price": 13.99,
-        "image": "redRising.jpg",
+        "image": "redRising.gif",
         "readNow": 0
     },
     {
@@ -84,7 +85,7 @@ books = [
         "author": "Christopher Paolini",
         "isbn": "9781250762924",
         "price": 21.99,
-        "image": "toSleepInASeaOfStars.jpg",
+        "image": "toSleepInASeaOfStars.gif",
         "readNow": 1
     },
     {
@@ -191,15 +192,10 @@ def home():
     #Link to the index page.  Pass the categories as a parameter
     return render_template('index.html', categories=categories)
 
-@app.route('/category')
-def category():
-    # Store the categoryId passed as a URL parameter into a variable
-    selectedCategory = int(request.args.get('categoryId'))
-
-    # Create a new list called selected_books containing a list of books that have the selected category
+@app.route('/category/<int:category_id>')
+def category(category_id):
+    selectedCategory = category_id
     selected_books = [b for b in books if b["categoryId"] == selectedCategory]
-    
-    # Link to the category page.  Pass the selectedCategory, categories and books as parameters
     return render_template('category.html',
                            selectedCategory=selectedCategory,
                            categories=categories,
